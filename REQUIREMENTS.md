@@ -21,8 +21,8 @@ The requirements below are broken into separate **tiers**, which model the way w
   - [x] gpa - decimal between 0.0 and 4.0
 - [x] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
-- [ ] Write a route to serve up all students
-- [ ] Write a route to serve up all campuses
+- [x] Write a route to serve up all students
+- [x] Write a route to serve up all campuses
 
 #### Frontend
 
