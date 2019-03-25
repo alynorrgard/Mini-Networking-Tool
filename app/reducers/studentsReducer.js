@@ -1,18 +1,14 @@
 import axios from 'axios';
-
-const initialState = {
-  loading: false,
-  students: [],
-};
+import { gettingStudents } from './loadingReducer';
 
 // ACTION TYPES
-const GETTING_STUDENTS = 'GETTING STUDENTS';
+// const GETTING_STUDENTS = 'GETTING_STUDENTS';
 const GOT_STUDENTS = 'GOT_STUDENTS';
 
 // ACTION CREATORS
-export const gettingStudents = () => ({
-  type: GETTING_STUDENTS,
-});
+// export const gettingStudents = () => ({
+//   type: GETTING_STUDENTS,
+// });
 
 export const gotStudents = studentsData => ({
   type: GOT_STUDENTS,
@@ -28,10 +24,10 @@ export const getStudents = () => {
   };
 };
 
-const studentsReducer = (state = initialState, action) => {
+const studentsReducer = (state = [], action) => {
   switch (action.type) {
-    case GETTING_STUDENTS:
-      return { ...state, loading: true };
+    // case GETTING_STUDENTS:
+    //   return { ...state, loading: true };
     case GOT_STUDENTS:
       return { ...state, loading: false, students: action.studentsData };
     default:

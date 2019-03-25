@@ -1,18 +1,14 @@
 import axios from 'axios';
-
-const initialState = {
-  loading: false,
-  campuses: [],
-};
+import { gettingCampuses } from './loadingReducer';
 
 // ACTION TYPES
-const GETTING_CAMPUSES = 'GETTING CAMPUSES';
+// const GETTING_CAMPUSES = 'GETTING_CAMPUSES';
 const GOT_CAMPUSES = 'GOT_CAMPUSES';
 
 // ACTION CREATORS
-export const gettingCampuses = () => ({
-  type: GETTING_CAMPUSES,
-});
+// export const gettingCampuses = () => ({
+//   type: GETTING_CAMPUSES,
+// });
 
 export const gotCampuses = campusesData => ({
   type: GOT_CAMPUSES,
@@ -28,10 +24,10 @@ export const getCampuses = () => {
   };
 };
 
-const campusesReducer = (state = initialState, action) => {
+const campusesReducer = (state = [], action) => {
   switch (action.type) {
-    case GETTING_CAMPUSES:
-      return { ...state, loading: true };
+    // case GETTING_CAMPUSES:
+    //   return { ...state, loading: true };
     case GOT_CAMPUSES:
       return { ...state, loading: false, campuses: action.campusesData };
     default:
