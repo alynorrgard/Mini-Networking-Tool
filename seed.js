@@ -1,8 +1,6 @@
-const { db } = require('./server/db');
+const { db, Campus, Student } = require('./server/db');
 const { green, red } = require('chalk');
 
-const Campus = require('./server/db/CampusModel');
-const Student = require('./server/db/StudentModel');
 const { campusDummyData, studentDummyData } = require('./server/db/dummyData');
 
 const seed = async () => {

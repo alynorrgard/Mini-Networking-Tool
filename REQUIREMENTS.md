@@ -19,7 +19,7 @@ The requirements below are broken into separate **tiers**, which model the way w
   - [x] email - not empty or null; must be a valid email
   - [x] imageUrl - with a default value
   - [x] gpa - decimal between 0.0 and 4.0
-- [ ] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
+- [x] Students may be associated with at most one campus. Likewise, campuses may be associated with many students
 
 - [ ] Write a route to serve up all students
 - [ ] Write a route to serve up all campuses

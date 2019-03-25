@@ -49,6 +49,7 @@ const studentDummyData = [
     email: 'aswinney0@soup.io',
     imageUrl: 'http://dummyimage.com/118x161.jpg/dddddd/000000',
     gpa: 0.49,
+    campusId: 5,
   },
   {
     id: 2,
@@ -57,6 +58,7 @@ const studentDummyData = [
     email: 'blawley1@fc2.com',
     imageUrl: 'http://dummyimage.com/170x181.jpg/ff4444/ffffff',
     gpa: 2.5,
+    campusId: 3,
   },
   {
     id: 3,
@@ -65,6 +67,7 @@ const studentDummyData = [
     email: 'rhirtz2@jugem.jp',
     imageUrl: 'http://dummyimage.com/128x156.jpg/5fa2dd/ffffff',
     gpa: 3.14,
+    campusId: 1,
   },
   {
     id: 4,
@@ -73,6 +76,7 @@ const studentDummyData = [
     email: 'tlay3@macromedia.com',
     imageUrl: 'http://dummyimage.com/206x148.jpg/ff4444/ffffff',
     gpa: 3.81,
+    campusId: 4,
   },
   {
     id: 5,
@@ -81,6 +85,7 @@ const studentDummyData = [
     email: 'tgwin4@sbwire.com',
     imageUrl: 'http://dummyimage.com/240x143.jpg/cc0000/ffffff',
     gpa: 1.34,
+    campusId: 2,
   },
 ];
 
