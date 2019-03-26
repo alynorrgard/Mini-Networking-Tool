@@ -33,16 +33,24 @@ export const gotStudents = students => ({
 // THUNK CREATORS -->> fetch data from server
 export const getCampuses = () => {
   return async dispatch => {
-    dispatch(gettingCampuses()); // sets loading state to 'true'
-    const { data } = await axios.get('/api/campuses');
-    dispatch(gotCampuses(data));
+    try {
+      dispatch(gettingCampuses()); // sets loading state to 'true'
+      const { data } = await axios.get('/api/campuses');
+      dispatch(gotCampuses(data));
+    } catch (err) {
+      console.log('ERROR loading campus data...');
+    }
   };
 };
 export const getStudents = () => {
   return async dispatch => {
-    dispatch(gettingStudents()); // sets loading state to 'true'
-    const { data } = await axios.get('/api/students');
-    dispatch(gotStudents(data));
+    try {
+      dispatch(gettingStudents()); // sets loading state to 'true'
+      const { data } = await axios.get('/api/students');
+      dispatch(gotStudents(data));
+    } catch (err) {
+      console.log('ERROR loading student data...');
+    }
   };
 };
 
