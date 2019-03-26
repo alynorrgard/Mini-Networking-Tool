@@ -1,6 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { getSingleCampus } from '../reducers/index';
 import axios from 'axios';
 
 class SingleCampus extends React.Component {
@@ -28,7 +26,7 @@ class SingleCampus extends React.Component {
     const campus = this.state.campus;
     return (
       <div>
-        <div key={campus.id}>
+        <div>
           <h2>{campus.name}</h2>
           <img src={campus.imageUrl} />
           <h4>{campus.address}</h4>

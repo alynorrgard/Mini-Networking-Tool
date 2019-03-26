@@ -4,6 +4,7 @@ import Home from './HomeComponent';
 import AllCampuses from './AllCampusesComponent';
 import AllStudents from './AllStudentsComponent';
 import SingleCampus from './SingleCampusComponent';
+import SingleStudent from './SingleStudentComponent';
 
 const Root = () => {
   return (
@@ -23,6 +24,7 @@ const Root = () => {
           <Route exact path="/campuses" component={AllCampuses} />
           <Route path="/campuses/:campusId" component={SingleCampus} />
           <Route exact path="/students" component={AllStudents} />
+          <Route path="/students/:studentId" component={SingleStudent} />
         </Switch>
       </div>
     </Router>
