@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudents } from '../reducers/studentsReducer';
+import { getStudents } from '../reducers/index';
 
 class AllStudents extends React.Component {
   // whenever state changes it will trigger a re-render:
@@ -10,14 +10,16 @@ class AllStudents extends React.Component {
 
   render() {
     console.log('props:', this.props);
-    const { students } = this.props; // loading
-    // if (loading) return <div>Loading...</div>;
+    const { students, loading } = this.props;
+    if (loading) return <div>Loading...</div>;
     return (
       <div>
         {students.map(student => {
           return (
             <div key={student.id}>
-              <h2>{student.name}</h2>
+              <h2>
+                {student.firstName} {student.lastName}
+              </h2>
             </div>
           );
         })}
@@ -27,7 +29,7 @@ class AllStudents extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  //   loading: state.loading,
+  loading: state.loading,
   students: state.students,
 });
 

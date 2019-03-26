@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCampuses } from '../reducers/campusesReducer';
+import { getCampuses } from '../reducers/index';
 
 class AllCampuses extends React.Component {
   // whenever state changes it will trigger a re-render:
@@ -10,7 +10,7 @@ class AllCampuses extends React.Component {
 
   render() {
     console.log('props:', this.props);
-    const { loading, campuses } = this.props;
+    const { campuses, loading } = this.props;
     if (loading) return <div>Loading...</div>;
     return (
       <div>
