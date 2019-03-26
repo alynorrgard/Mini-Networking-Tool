@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class SingleCampus extends React.Component {
   constructor() {
@@ -35,11 +36,11 @@ class SingleCampus extends React.Component {
         {campus.students ? (
           campus.students.map(student => {
             return (
-              <div key={student.id}>
+              <Link to={`/students/${student.id}`} key={student.id}>
                 <h4>
                   {student.firstName} {student.lastName}
                 </h4>
-              </div>
+              </Link>
             );
           })
         ) : (

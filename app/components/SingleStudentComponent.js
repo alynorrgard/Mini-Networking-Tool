@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class SingleStudent extends React.Component {
   constructor() {
@@ -36,7 +37,9 @@ class SingleStudent extends React.Component {
           <img src={student.imageUrl} />
           <p>{student.gpa}</p>
           {student.campus ? (
-            <p>{student.campus.name}</p>
+            <Link to={`/campuses/${student.campus.id}`}>
+              {student.campus.name}
+            </Link>
           ) : (
             <p>This student is not yet enrolled at a campus!</p>
           )}
