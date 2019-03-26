@@ -9,21 +9,17 @@ import loadingReducer from './loadingReducer';
 import axios from 'axios';
 
 // ACTION TYPES
-export const GETTING_CAMPUSES = 'GETTING_CAMPUSES';
+export const FETCHING_DATA = 'FETCHING_DATA';
 export const GOT_CAMPUSES = 'GOT_CAMPUSES';
-export const GETTING_STUDENTS = 'GETTING_STUDENTS';
 export const GOT_STUDENTS = 'GOT_STUDENTS';
 
 // ACTION CREATORS
-export const gettingCampuses = () => ({
-  type: GETTING_CAMPUSES,
+export const fetchingData = () => ({
+  type: FETCHING_DATA,
 });
 export const gotCampuses = campuses => ({
   type: GOT_CAMPUSES,
   campuses,
-});
-export const gettingStudents = () => ({
-  type: GETTING_STUDENTS,
 });
 export const gotStudents = students => ({
   type: GOT_STUDENTS,
@@ -34,7 +30,7 @@ export const gotStudents = students => ({
 export const getCampuses = () => {
   return async dispatch => {
     try {
-      dispatch(gettingCampuses()); // sets loading state to 'true'
+      dispatch(fetchingData()); // sets loading state to 'true'
       const { data } = await axios.get('/api/campuses');
       dispatch(gotCampuses(data));
     } catch (err) {
@@ -45,7 +41,7 @@ export const getCampuses = () => {
 export const getStudents = () => {
   return async dispatch => {
     try {
-      dispatch(gettingStudents()); // sets loading state to 'true'
+      dispatch(fetchingData()); // sets loading state to 'true'
       const { data } = await axios.get('/api/students');
       dispatch(gotStudents(data));
     } catch (err) {
