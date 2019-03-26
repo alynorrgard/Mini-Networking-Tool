@@ -21,4 +21,13 @@ router.get('/:studentId', async (req, res, next) => {
   }
 });
 
+router.post('/', async (req, res, next) => {
+  try {
+    await Student.create(req.body); // TBD
+    res.status(201).send('Successfully added a new student!');
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
