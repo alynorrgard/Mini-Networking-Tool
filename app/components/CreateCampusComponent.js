@@ -3,8 +3,8 @@ import axios from 'axios';
 import CampusForm from './CampusFormComponent';
 
 const initialState = {
-  campusName: '',
-  campusAddress: '',
+  name: '',
+  address: '',
 };
 
 class CreateCampus extends React.Component {
@@ -24,8 +24,8 @@ class CreateCampus extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const res = await axios.post('/api/todos', this.state);
-      this.props.addCampus(res.data);
+      const completedForm = await axios.post('/api/campuses', this.state);
+      this.props.addCampus(completedForm.data);
       this.setState(initialState);
     } catch (err) {
       console.log('ERROR creating new campus');

@@ -2,33 +2,33 @@ import React from 'react';
 
 const CampusForm = props => (
   <form id="new-campus-form" onSubmit={props.handleSubmit}>
-    <label htmlFor="campusName">
+    <label htmlFor="name">
       Campus Name:
-      {!props.campusName && (
+      {!props.name && (
         <span className="warning">Please fill out Campus Name</span>
       )}
     </label>
     <input
-      name="campusName"
+      name="name"
       type="text"
       onChange={props.handleChange}
-      value={props.campusName}
+      value={props.name}
     />
 
-    <label htmlFor="campusAddress">
+    <label htmlFor="address">
       Campus Address:
-      {!props.campusAddress && (
+      {!props.address && (
         <span className="warning">Please fill out Campus Address</span>
       )}
     </label>
     <input
-      name="campusAddress"
+      name="address"
       type="text"
       onChange={props.handleChange}
-      value={props.campusAddress}
+      value={props.address}
     />
 
-    <button type="submit" disabled={!props.campusName || !props.campusAddress}>
+    <button type="submit" disabled={!props.name || !props.address}>
       Submit
     </button>
   </form>

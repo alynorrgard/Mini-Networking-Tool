@@ -7,6 +7,7 @@ import studentsReducer from './studentsReducer';
 import loadingReducer from './loadingReducer';
 
 import axios from 'axios';
+import { runInNewContext } from 'vm';
 
 // ACTION TYPES
 export const FETCHING_DATA = 'FETCHING_DATA';
@@ -51,6 +52,15 @@ export const getStudents = () => {
       dispatch(gotStudents(data));
     } catch (err) {
       console.log('ERROR loading student data...');
+    }
+  };
+};
+export const addCampus = campus => {
+  return dispatch => {
+    try {
+      dispatch(addedCampus(campus));
+    } catch (err) {
+      console.log('ERROR creating new campus...');
     }
   };
 };

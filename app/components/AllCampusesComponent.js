@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCampuses } from '../reducers/index';
+import { getCampuses, addCampus } from '../reducers/index';
 import CreateCampus from './CreateCampusComponent';
 
 class AllCampuses extends React.Component {
@@ -27,7 +27,7 @@ class AllCampuses extends React.Component {
           })}
         </div>
         <div>
-          <CreateCampus />
+          <CreateCampus addCampus={addCampus} />
         </div>
       </div>
     );
