@@ -12,6 +12,7 @@ import axios from 'axios';
 export const FETCHING_DATA = 'FETCHING_DATA';
 export const GOT_CAMPUSES = 'GOT_CAMPUSES';
 export const GOT_STUDENTS = 'GOT_STUDENTS';
+export const ADDED_CAMPUS = 'ADD_CAMPUS';
 
 // ACTION CREATORS
 export const fetchingData = () => ({
@@ -24,6 +25,10 @@ export const gotCampuses = campuses => ({
 export const gotStudents = students => ({
   type: GOT_STUDENTS,
   students,
+});
+export const addedCampus = campus => ({
+  type: ADDED_CAMPUS,
+  campus,
 });
 
 // THUNK CREATORS -->> fetch data from server
