@@ -1,6 +1,5 @@
 const campusDummyData = [
   {
-    id: 1,
     name: 'Antonopoulos',
     imageUrl: 'http://dummyimage.com/194x160.jpg/cc0000/ffffff',
     address: '79 Elka Terrace',
@@ -8,7 +7,6 @@ const campusDummyData = [
       'quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam',
   },
   {
-    id: 2,
     name: 'Abden',
     imageUrl: 'http://dummyimage.com/233x110.jpg/cc0000/ffffff',
     address: '1 Brentwood Center',
@@ -16,7 +14,6 @@ const campusDummyData = [
       'at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in felis donec semper',
   },
   {
-    id: 3,
     name: 'Killingbeck',
     imageUrl: 'http://dummyimage.com/191x102.jpg/dddddd/000000',
     address: '730 Butterfield Center',
@@ -24,7 +21,6 @@ const campusDummyData = [
       'eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque',
   },
   {
-    id: 4,
     name: 'Westcar',
     imageUrl: 'http://dummyimage.com/169x123.jpg/cc0000/ffffff',
     address: '9 Cardinal Trail',
@@ -32,7 +28,6 @@ const campusDummyData = [
       'dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit',
   },
   {
-    id: 5,
     name: 'Hammerstone',
     imageUrl: 'http://dummyimage.com/174x218.jpg/cc0000/ffffff',
     address: '350 Tony Park',
@@ -43,7 +38,6 @@ const campusDummyData = [
 
 const studentDummyData = [
   {
-    id: 1,
     firstName: 'Audrie',
     lastName: 'Swinney',
     email: 'aswinney0@soup.io',
@@ -52,7 +46,6 @@ const studentDummyData = [
     campusId: 5,
   },
   {
-    id: 2,
     firstName: 'Bryanty',
     lastName: 'Lawley',
     email: 'blawley1@fc2.com',
@@ -61,7 +54,6 @@ const studentDummyData = [
     campusId: 3,
   },
   {
-    id: 3,
     firstName: 'Rory',
     lastName: 'Hirtz',
     email: 'rhirtz2@jugem.jp',
@@ -70,7 +62,6 @@ const studentDummyData = [
     campusId: 1,
   },
   {
-    id: 4,
     firstName: 'Tito',
     lastName: 'Lay',
     email: 'tlay3@macromedia.com',
@@ -79,7 +70,6 @@ const studentDummyData = [
     campusId: 4,
   },
   {
-    id: 5,
     firstName: 'Tarrah',
     lastName: 'Gwin',
     email: 'tgwin4@sbwire.com',
