@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import CampusForm from './CampusFormComponent';
-import { addCampus } from '../reducers/index';
+import { addCampus, getCampuses } from '../reducers/index';
 
 const initialState = {
   name: '',
@@ -26,8 +26,9 @@ class CreateCampus extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      await axios.post('/api/campuses', this.state);
-      this.props.addCampus(this.state);
+      const newCampus = await axios.post('/api/campuses', this.state);
+      this.props.addCampus(newCampus);
+      this.props.getCampuses();
       this.setState(initialState);
     } catch (err) {
       console.log('ERROR creating new campus');
@@ -47,6 +48,7 @@ class CreateCampus extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   addCampus: campus => dispatch(addCampus(campus)),
+  getCampuses: () => dispatch(getCampuses()),
 });
 
 export default connect(
