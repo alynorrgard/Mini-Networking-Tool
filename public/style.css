@@ -17,6 +17,10 @@ body {
   width: 100vw; */
 }
 
+#loading {
+  padding-bottom: 100%;
+}
+
 nav {
   align-items: center;
   background-color: #373c39;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getStudents, deleteStudent } from '../reducers/index';
 import CreateStudent from './CreateStudentComponent';
+import LoadingPage from './LoadingPage';
 import axios from 'axios';
 
 class AllStudents extends React.Component {
@@ -23,7 +24,7 @@ class AllStudents extends React.Component {
   render() {
     console.log('props:', this.props);
     const { students, loading } = this.props;
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <LoadingPage />;
     return (
       <div id="all-students">
         <div id="student-rows">
