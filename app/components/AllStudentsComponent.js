@@ -19,11 +19,14 @@ class AllStudents extends React.Component {
         <div>
           {students.map(student => {
             return (
-              <Link to={`/students/${student.id}`} key={student.id}>
-                <h2>
-                  {student.firstName} {student.lastName}
-                </h2>
-              </Link>
+              <div key={student.id}>
+                <Link to={`/students/${student.id}`}>
+                  <h2>
+                    {student.firstName} {student.lastName}
+                  </h2>
+                </Link>
+                <button type="button">x</button>
+              </div>
             );
           })}
         </div>

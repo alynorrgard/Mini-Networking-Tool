@@ -20,10 +20,13 @@ class AllCampuses extends React.Component {
         <div>
           {campuses.map(campus => {
             return (
-              <Link to={`/campuses/${campus.id}`} key={campus.id}>
-                <img src={campus.imageUrl} />
-                <h2>{campus.name}</h2>
-              </Link>
+              <div key={campus.id}>
+                <Link to={`/campuses/${campus.id}`}>
+                  <img src={campus.imageUrl} />
+                  <h2>{campus.name}</h2>
+                </Link>
+                <button type="button">x</button>
+              </div>
             );
           })}
         </div>
