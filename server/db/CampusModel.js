@@ -12,7 +12,7 @@ module.exports = db.define('campus', {
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://expo.advance.net/img/5cb26d37b6/width960/109_thecommonsnortheastentry.jpeg',
+      'https://farm9.staticflickr.com/8356/8327376280_313fa47d3d_b.jpg',
   },
   address: {
     type: Sequelize.STRING,

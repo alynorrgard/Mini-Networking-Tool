@@ -34,7 +34,7 @@ class SingleStudent extends React.Component {
             {student.firstName} {student.lastName}
           </h2>
           <h4>{student.email}</h4>
-          <img src={student.imageUrl} />
+          <img src={student.imageUrl} className="student-image" />
           <p>{student.gpa}</p>
           {student.campus ? (
             <Link to={`/campuses/${student.campus.id}`}>

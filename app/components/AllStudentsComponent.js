@@ -10,7 +10,7 @@ class AllStudents extends React.Component {
     super();
     this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
   }
-  // whenever state changes it will trigger a re-render:
+
   componentDidMount() {
     this.props.getStudents();
   }
@@ -25,11 +25,11 @@ class AllStudents extends React.Component {
     const { students, loading } = this.props;
     if (loading) return <div>Loading...</div>;
     return (
-      <div>
-        <div>
+      <div id="all-students">
+        <div id="student-rows">
           {students.map(student => {
             return (
-              <div key={student.id}>
+              <div key={student.id} className="student-container">
                 <Link to={`/students/${student.id}`}>
                   <h2>
                     {student.firstName} {student.lastName}
@@ -46,6 +46,7 @@ class AllStudents extends React.Component {
           })}
         </div>
         <div>
+          <h3>Add a Student:</h3>
           <CreateStudent />
         </div>
       </div>

@@ -10,7 +10,7 @@ class AllCampuses extends React.Component {
     super();
     this.handleDeleteCampus = this.handleDeleteCampus.bind(this);
   }
-  // whenever state changes it will trigger a re-render:
+
   componentDidMount() {
     this.props.getCampuses();
   }
@@ -21,17 +21,17 @@ class AllCampuses extends React.Component {
   }
 
   render() {
-    console.log('props:', this.props);
+    // console.log('props:', this.props);
     const { campuses, loading } = this.props;
     if (loading) return <div>Loading...</div>;
     return (
-      <div>
-        <div>
+      <div id="all-campuses">
+        <div id="campus-rows">
           {campuses.map(campus => {
             return (
-              <div key={campus.id}>
+              <div key={campus.id} className="campus-container">
                 <Link to={`/campuses/${campus.id}`}>
-                  <img src={campus.imageUrl} />
+                  <img className="campus-image" src={campus.imageUrl} />
                   <h2>{campus.name}</h2>
                 </Link>
                 <button
@@ -44,7 +44,8 @@ class AllCampuses extends React.Component {
             );
           })}
         </div>
-        <div>
+        <div id="campus-form">
+          <h3>Add a Campus:</h3>
           <CreateCampus />
         </div>
       </div>

@@ -11,14 +11,11 @@ const Root = () => {
     <Router>
       <div>
         <nav>
-          Welcome!
+          <img src="https://vignette.wikia.nocookie.net/harrypotter/images/a/ae/Hogwartscrest.png/revision/latest?cb=20110806202805" />
+          <Link to="/">Home</Link>
           <Link to="/campuses">Campuses</Link>
           <Link to="/students">Students</Link>
         </nav>
-        <main>
-          <h1>Welcome to the Margaret Hamilton Academy of JavaScript!</h1>
-          <p>This seems like a nice place to get started with some Routes!</p>
-        </main>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/campuses" component={AllCampuses} />
