@@ -7,13 +7,13 @@ import studentsReducer from './studentsReducer';
 import loadingReducer from './loadingReducer';
 
 import axios from 'axios';
-import { runInNewContext } from 'vm';
 
 // ACTION TYPES
 export const FETCHING_DATA = 'FETCHING_DATA';
 export const GOT_CAMPUSES = 'GOT_CAMPUSES';
 export const GOT_STUDENTS = 'GOT_STUDENTS';
-export const ADDED_CAMPUS = 'ADD_CAMPUS';
+export const ADDED_CAMPUS = 'ADDED_CAMPUS';
+export const ADDED_STUDENT = 'ADDED_STUDENTS';
 
 // ACTION CREATORS
 export const fetchingData = () => ({
@@ -30,6 +30,10 @@ export const gotStudents = students => ({
 export const addedCampus = campus => ({
   type: ADDED_CAMPUS,
   campus,
+});
+export const addedStudent = student => ({
+  type: ADDED_STUDENT,
+  student,
 });
 
 // THUNK CREATORS -->> fetch data from server
@@ -60,7 +64,16 @@ export const addCampus = campus => {
     try {
       dispatch(addedCampus(campus));
     } catch (err) {
-      console.log('ERROR creating new campus...');
+      console.log('ERROR adding new campus...');
+    }
+  };
+};
+export const addStudent = student => {
+  return dispatch => {
+    try {
+      dispatch(addedStudent(student));
+    } catch (err) {
+      console.log('ERROR adding new student...');
     }
   };
 };

@@ -7,6 +7,7 @@ import CreateCampus from './CreateCampusComponent';
 class AllCampuses extends React.Component {
   // whenever state changes it will trigger a re-render:
   componentDidMount() {
+    console.log('MOUNTED - ');
     this.props.getCampuses();
   }
 

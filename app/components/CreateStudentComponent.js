@@ -1,13 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import CampusForm from './CampusFormComponent';
+import StudentForm from './StudentFormComponent';
 
 const initialState = {
-  name: '',
-  address: '',
+  firstName: '',
+  lastName: '',
+  email: '',
 };
 
-class CreateCampus extends React.Component {
+class CreateStudent extends React.Component {
   constructor() {
     super();
     this.state = initialState;
@@ -24,18 +25,18 @@ class CreateCampus extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const completedForm = await axios.post('/api/campuses', this.state);
+      const completedForm = await axios.post('/api/students', this.state);
       console.log('HANDLESUBMIT PROPS:', this.props);
-      this.props.addCampus(completedForm.data);
+      this.props.addStudent(completedForm.data);
       this.setState(initialState);
     } catch (err) {
-      console.log('ERROR creating new campus');
+      console.log('ERROR creating new student');
     }
   }
 
   render() {
     return (
-      <CampusForm
+      <StudentForm
         {...this.state}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
@@ -44,4 +45,4 @@ class CreateCampus extends React.Component {
   }
 }
 
-export default CreateCampus;
+export default CreateStudent;
