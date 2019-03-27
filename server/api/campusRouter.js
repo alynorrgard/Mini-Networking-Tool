@@ -23,8 +23,21 @@ router.get('/:campusId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    await Campus.create(req.body); // TBD
-    res.status(201).send('Successfully added a new campus!');
+    await Campus.create(req.body);
+    res.sendStatus(201);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:campusId', async (req, res, next) => {
+  try {
+    await Campus.destroy({
+      where: {
+        id: req.params.campusId,
+      },
+    });
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
