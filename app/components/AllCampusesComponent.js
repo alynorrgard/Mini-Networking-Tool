@@ -29,7 +29,7 @@ class AllCampuses extends React.Component {
         <div>
           {campuses.map(campus => {
             return (
-              <div key={campus.name}>
+              <div key={campus.id}>
                 <Link to={`/campuses/${campus.id}`}>
                   <img src={campus.imageUrl} />
                   <h2>{campus.name}</h2>

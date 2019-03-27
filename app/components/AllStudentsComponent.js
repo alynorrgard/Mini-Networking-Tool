@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getStudents, addStudent, deleteStudent } from '../reducers/index';
+import { getStudents, deleteStudent } from '../reducers/index';
 import CreateStudent from './CreateStudentComponent';
 import axios from 'axios';
 
@@ -46,7 +46,7 @@ class AllStudents extends React.Component {
           })}
         </div>
         <div>
-          <CreateStudent addStudent={addStudent} />
+          <CreateStudent />
         </div>
       </div>
     );

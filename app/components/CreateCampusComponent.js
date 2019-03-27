@@ -26,8 +26,8 @@ class CreateCampus extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const completedForm = await axios.post('/api/campuses', this.state);
-      this.props.addCampus(completedForm.data);
+      await axios.post('/api/campuses', this.state);
+      this.props.addCampus(this.state);
       this.setState(initialState);
     } catch (err) {
       console.log('ERROR creating new campus');
