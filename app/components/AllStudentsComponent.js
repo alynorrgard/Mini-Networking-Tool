@@ -1,13 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getStudents, addStudent } from '../reducers/index';
+import { getStudents, addStudent, deleteStudent } from '../reducers/index';
 import CreateStudent from './CreateStudentComponent';
+import axios from 'axios';
 
 class AllStudents extends React.Component {
+  constructor() {
+    super();
+    this.handleDeleteStudent = this.handleDeleteStudent.bind(this);
+  }
   // whenever state changes it will trigger a re-render:
   componentDidMount() {
     this.props.getStudents();
+  }
+
+  async handleDeleteStudent(studentId) {
+    await axios.delete(`api/students/${studentId}`);
+    this.props.deleteStudent(studentId);
   }
 
   render() {
@@ -25,7 +35,12 @@ class AllStudents extends React.Component {
                     {student.firstName} {student.lastName}
                   </h2>
                 </Link>
-                <button type="button">x</button>
+                <button
+                  type="button"
+                  onClick={() => this.handleDeleteStudent(student.id)}
+                >
+                  x
+                </button>
               </div>
             );
           })}
@@ -45,6 +60,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getStudents: () => dispatch(getStudents()),
+  deleteStudent: studentId => dispatch(deleteStudent(studentId)),
 });
 
 export default connect(

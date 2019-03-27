@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import CampusForm from './CampusFormComponent';
+import { addCampus } from '../reducers/index';
 
 const initialState = {
   name: '',
@@ -25,7 +27,6 @@ class CreateCampus extends React.Component {
     event.preventDefault();
     try {
       const completedForm = await axios.post('/api/campuses', this.state);
-      console.log('HANDLESUBMIT PROPS:', this.props);
       this.props.addCampus(completedForm.data);
       this.setState(initialState);
     } catch (err) {
@@ -44,4 +45,11 @@ class CreateCampus extends React.Component {
   }
 }
 
-export default CreateCampus;
+const mapDispatchToProps = dispatch => ({
+  addCampus: campus => dispatch(addCampus(campus)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateCampus);

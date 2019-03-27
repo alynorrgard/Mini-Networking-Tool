@@ -13,7 +13,9 @@ export const FETCHING_DATA = 'FETCHING_DATA';
 export const GOT_CAMPUSES = 'GOT_CAMPUSES';
 export const GOT_STUDENTS = 'GOT_STUDENTS';
 export const ADDED_CAMPUS = 'ADDED_CAMPUS';
-export const ADDED_STUDENT = 'ADDED_STUDENTS';
+export const ADDED_STUDENT = 'ADDED_STUDENT';
+export const DELETED_CAMPUS = 'DELETED_CAMPUS';
+export const DELETED_STUDENT = 'DELETED_STUDENT';
 
 // ACTION CREATORS
 export const fetchingData = () => ({
@@ -34,6 +36,14 @@ export const addedCampus = campus => ({
 export const addedStudent = student => ({
   type: ADDED_STUDENT,
   student,
+});
+export const deletedCampus = campusId => ({
+  type: DELETED_CAMPUS,
+  campusId,
+});
+export const deletedStudent = studentId => ({
+  type: DELETED_STUDENT,
+  studentId,
 });
 
 // THUNK CREATORS -->> fetch data from server
@@ -74,6 +84,24 @@ export const addStudent = student => {
       dispatch(addedStudent(student));
     } catch (err) {
       console.log('ERROR adding new student...');
+    }
+  };
+};
+export const deleteCampus = campusId => {
+  return dispatch => {
+    try {
+      dispatch(deletedCampus(campusId));
+    } catch (err) {
+      console.log('ERROR deleting campus...');
+    }
+  };
+};
+export const deleteStudent = studentId => {
+  return dispatch => {
+    try {
+      dispatch(deletedStudent(studentId));
+    } catch (err) {
+      console.log('ERROR deleting student...');
     }
   };
 };
