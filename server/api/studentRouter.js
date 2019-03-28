@@ -23,8 +23,8 @@ router.get('/:studentId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    await Student.create(req.body); // TBD
-    res.status(201).send('Successfully added a new student!');
+    const newStudent = await Student.create(req.body);
+    res.status(201).send(newStudent);
   } catch (err) {
     next(err);
   }

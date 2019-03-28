@@ -2,18 +2,16 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import StudentForm from './StudentFormComponent';
-import { addStudent } from '../reducers/index';
-
-const initialState = {
-  firstName: '',
-  lastName: '',
-  email: '',
-};
+import { addStudent, getStudents } from '../reducers/index';
 
 class CreateStudent extends React.Component {
   constructor() {
     super();
-    this.state = initialState;
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,9 +25,9 @@ class CreateStudent extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      await axios.post('/api/students', this.state);
-      this.props.addStudent(this.state);
-      this.setState(initialState);
+      const newStudent = await axios.post('/api/students', this.state);
+      this.props.addStudent(newStudent.data);
+      this.props.getStudents();
     } catch (err) {
       console.log('ERROR creating new student');
     }
@@ -48,6 +46,7 @@ class CreateStudent extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   addStudent: student => dispatch(addStudent(student)),
+  getStudents: () => dispatch(getStudents()),
 });
 
 export default connect(
