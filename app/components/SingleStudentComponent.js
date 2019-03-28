@@ -8,14 +8,18 @@ class SingleStudent extends React.Component {
     this.state = {
       student: {},
     };
+    this.displayStudent = this.displayStudent.bind(this);
   }
-  // whenever state changes it will trigger a re-render:
-  async componentDidMount() {
+
+  componentDidMount() {
+    this.displayStudent();
+  }
+
+  async displayStudent() {
     try {
       const selectedStudent = await axios.get(
         `/api/students/${this.props.match.params.studentId}`
       );
-      console.log('STUDENT DATA:', selectedStudent.data);
       this.setState({
         student: selectedStudent.data,
       });
@@ -26,7 +30,6 @@ class SingleStudent extends React.Component {
 
   render() {
     const student = this.state.student;
-    console.log('STUDENT STATE:', student);
     return (
       <div className="student-page">
         <h2>
@@ -35,14 +38,12 @@ class SingleStudent extends React.Component {
         <img src={student.imageUrl} className="student-image" />
         <p>EMAIL: {student.email}</p>
         <p>GPA: {student.gpa}</p>
+        <p>CAMPUS AFFILIATION:</p>
         {student.campus ? (
           <div>
-            <p>CAMPUS AFFILIATION:</p>
-            <p className="single-page-link">
-              <Link to={`/campuses/${student.campus.id}`}>
-                {student.campus.name}
-              </Link>
-            </p>
+            <Link to={`/campuses/${student.campus.id}`}>
+              <p className="single-page-link">{student.campus.name}</p>
+            </Link>
           </div>
         ) : (
           <p>This student is not yet enrolled at a campus!</p>
