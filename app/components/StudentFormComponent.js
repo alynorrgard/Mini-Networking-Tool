@@ -4,9 +4,7 @@ const StudentForm = props => (
   <form id="new-student-form" onSubmit={props.handleSubmit}>
     <label htmlFor="firstName">
       First Name:
-      {!props.firstName && (
-        <span className="warning">Please fill out First Name</span>
-      )}
+      {!props.firstName && <span className="warning">*Required Field</span>}
     </label>
     <input
       name="firstName"
@@ -17,9 +15,7 @@ const StudentForm = props => (
 
     <label htmlFor="lastName">
       Last Name:
-      {!props.lastName && (
-        <span className="warning">Please fill out Last Name</span>
-      )}
+      {!props.lastName && <span className="warning">*Required Field</span>}
     </label>
     <input
       name="lastName"
@@ -30,7 +26,7 @@ const StudentForm = props => (
 
     <label htmlFor="email">
       Email:
-      {!props.email && <span className="warning">Please fill out Email</span>}
+      {!props.email && <span className="warning">*Required Field</span>}
     </label>
     <input
       name="email"
@@ -41,9 +37,10 @@ const StudentForm = props => (
 
     <button
       type="submit"
+      className="add"
       disabled={!props.firstName || !props.lastName || !props.email}
     >
-      Submit
+      ADD
     </button>
   </form>
 );

@@ -144,6 +144,23 @@ nav > a:hover {
   margin: 0 2em;
 }
 
+.add {
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: bold;
+  color: #547344;
+  background-color: #99d17b;
+  height: 2em;
+  width: 7em;
+  border: 3px solid #547344;
+  margin-left: 1em;
+}
+
 .single-page-link:hover {
   font-weight: bold;
+}
+
+.warning {
+  color: #a61108;
+  font-size: 12px;
 }
