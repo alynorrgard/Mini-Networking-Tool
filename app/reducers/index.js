@@ -50,22 +50,22 @@ export const deletedStudent = studentId => ({
 export const getCampuses = () => {
   return async dispatch => {
     try {
-      dispatch(fetchingData()); // sets loading state to 'true'
+      dispatch(fetchingData());
       const { data } = await axios.get('/api/campuses');
       dispatch(gotCampuses(data));
     } catch (err) {
-      console.log('ERROR loading campus data...');
+      console.error(err);
     }
   };
 };
 export const getStudents = () => {
   return async dispatch => {
     try {
-      dispatch(fetchingData()); // sets loading state to 'true'
+      dispatch(fetchingData());
       const { data } = await axios.get('/api/students');
       dispatch(gotStudents(data));
     } catch (err) {
-      console.log('ERROR loading student data...');
+      console.error(err);
     }
   };
 };
@@ -74,7 +74,7 @@ export const addCampus = campus => {
     try {
       dispatch(addedCampus(campus));
     } catch (err) {
-      console.log('ERROR adding new campus...');
+      console.error(err);
     }
   };
 };
@@ -83,7 +83,7 @@ export const addStudent = student => {
     try {
       dispatch(addedStudent(student));
     } catch (err) {
-      console.log('ERROR adding new student...');
+      console.error(err);
     }
   };
 };
@@ -92,7 +92,7 @@ export const deleteCampus = campusId => {
     try {
       dispatch(deletedCampus(campusId));
     } catch (err) {
-      console.log('ERROR deleting campus...');
+      console.error(err);
     }
   };
 };
@@ -101,7 +101,7 @@ export const deleteStudent = studentId => {
     try {
       dispatch(deletedStudent(studentId));
     } catch (err) {
-      console.log('ERROR deleting student...');
+      console.error(err);
     }
   };
 };

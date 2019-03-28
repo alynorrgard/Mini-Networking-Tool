@@ -24,7 +24,7 @@ class SingleStudent extends React.Component {
         student: selectedStudent.data,
       });
     } catch (err) {
-      console.log('ERROR loading student data');
+      console.error('ERROR loading student data:', err);
     }
   }
 

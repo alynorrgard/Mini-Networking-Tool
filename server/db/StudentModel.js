@@ -27,7 +27,7 @@ module.exports = db.define('student', {
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTboibIzv9y6oDYqiBVnOuKe426Le-SiH9udatdjmFYHZOkzsvC',
+      'https://media.istockphoto.com/vectors/wizard-hat-vector-icon-vector-id641086648?k=6&m=641086648&s=612x612&w=0&h=rJyemebA7bRag4G2g7PPZe_D7TQDae6q8DXxqs2J5sk=',
   },
   gpa: {
     type: Sequelize.DECIMAL,

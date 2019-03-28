@@ -20,10 +20,6 @@ const Home = () => {
         </i>
         , which, translated from Latin, means "Never tickle a sleeping dragon".
       </p>
-      {/* <img
-        id="map"
-        src="https://i.etsystatic.com/14079108/r/il/f571ca/1098906480/il_570xN.1098906480_bp3n.jpg"
-      /> */}
     </main>
   );
 };

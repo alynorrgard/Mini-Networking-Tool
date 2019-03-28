@@ -29,7 +29,7 @@ class CreateStudent extends React.Component {
       this.props.addStudent(newStudent.data);
       this.props.getStudents();
     } catch (err) {
-      console.log('ERROR creating new student');
+      console.error('ERROR creating new student:', err);
     }
   }
 

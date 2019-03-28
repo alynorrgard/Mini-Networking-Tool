@@ -17,12 +17,15 @@ class AllStudents extends React.Component {
   }
 
   async handleDeleteStudent(studentId) {
-    await axios.delete(`api/students/${studentId}`);
-    this.props.deleteStudent(studentId);
+    try {
+      await axios.delete(`api/students/${studentId}`);
+      this.props.deleteStudent(studentId);
+    } catch (err) {
+      console.error('ERROR deleting student:', err);
+    }
   }
 
   render() {
-    console.log('props:', this.props);
     const { students, loading } = this.props;
     if (loading) return <LoadingPage />;
     return (

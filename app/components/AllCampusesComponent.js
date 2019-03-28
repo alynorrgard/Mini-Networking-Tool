@@ -17,12 +17,15 @@ class AllCampuses extends React.Component {
   }
 
   async handleDeleteCampus(campusId) {
-    await axios.delete(`api/campuses/${campusId}`);
-    this.props.deleteCampus(campusId);
+    try {
+      await axios.delete(`api/campuses/${campusId}`);
+      this.props.deleteCampus(campusId);
+    } catch (err) {
+      console.error('ERROR deleting campus:', err);
+    }
   }
 
   render() {
-    // console.log('props:', this.props);
     const { campuses, loading } = this.props;
     if (loading) return <LoadingPage />;
     return (

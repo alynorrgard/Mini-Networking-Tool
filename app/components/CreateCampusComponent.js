@@ -28,7 +28,7 @@ class CreateCampus extends React.Component {
       this.props.addCampus(newCampus.data);
       this.props.getCampuses();
     } catch (err) {
-      console.log('ERROR creating new campus');
+      console.error('ERROR creating new campus:', err);
     }
   }
 

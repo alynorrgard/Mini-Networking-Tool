@@ -24,13 +24,12 @@ class SingleCampus extends React.Component {
         campus: selectedCampus.data,
       });
     } catch (err) {
-      console.log('ERROR loading campus data');
+      console.error('ERROR loading campus data:', err);
     }
   }
 
   render() {
     const campus = this.state.campus;
-    console.log('SINGLE CAMPUS:', campus);
     return (
       <div className="campus-page">
         <div>
