@@ -26,23 +26,26 @@ class SingleCampus extends React.Component {
   render() {
     const campus = this.state.campus;
     return (
-      <div>
+      <div className="campus-page">
         <div>
-          <h2>{campus.name}</h2>
+          <h1>{campus.name}</h1>
           <img src={campus.imageUrl} className="campus-image" />
-          <h4>{campus.address}</h4>
+          <h3>{campus.address}</h3>
           <p>{campus.description}</p>
         </div>
         {campus.students ? (
-          campus.students.map(student => {
-            return (
-              <Link to={`/students/${student.id}`} key={student.id}>
-                <h4>
-                  {student.firstName} {student.lastName}
-                </h4>
-              </Link>
-            );
-          })
+          <div>
+            <p>AFFILIATED STUDENTS:</p>
+            {campus.students.map(student => {
+              return (
+                <p className="single-page-link" key={student.id}>
+                  <Link to={`/students/${student.id}`}>
+                    {student.firstName} {student.lastName}
+                  </Link>
+                </p>
+              );
+            })}
+          </div>
         ) : (
           <p>This campus does not have any students yet!</p>
         )}

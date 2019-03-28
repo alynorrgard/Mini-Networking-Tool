@@ -72,7 +72,7 @@ h4 {
 main > img {
   max-height: 25em;
   width: auto;
-  /* padding: 20px, 20px, 0px; */
+  padding-top: 1em;
 }
 
 #home {
@@ -81,12 +81,6 @@ main > img {
   text-align: justify;
   line-height: 1.5;
 }
-
-/* #map {
-  margin: 0;
-  width: 100%;
-  max-height: none;
-} */
 
 nav > img {
   box-sizing: border-box;
@@ -112,10 +106,13 @@ nav > a:hover {
 
 .campus-container,
 .student-container {
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
   padding: 10px;
   text-align: center;
   align-content: center;
+  align-items: center;
 }
 
 .campus-image {
@@ -123,12 +120,35 @@ nav > a:hover {
   width: auto;
 }
 
-.campus-container > a {
-  /* color: #141615; */
-  /* font-family: fantasy; */
+.campus-page,
+.student-page {
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-bottom: 10em;
+  margin: 0 10em;
+  text-align: center;
+  align-content: center;
+  align-items: center;
 }
 
 .student-image {
   max-height: 15em;
   width: auto;
+}
+
+.remove {
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: bold;
+  color: #a61108;
+  background-color: #f4aaa5;
+  height: 2em;
+  width: 7em;
+  border: 3px solid #a61108;
+  margin: 0 2em;
+}
+
+.single-page-link:hover {
+  font-weight: bold;
 }

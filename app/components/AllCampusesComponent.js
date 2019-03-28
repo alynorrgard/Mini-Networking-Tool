@@ -38,9 +38,10 @@ class AllCampuses extends React.Component {
                 </Link>
                 <button
                   type="button"
+                  className="remove"
                   onClick={() => this.handleDeleteCampus(campus.id)}
                 >
-                  x
+                  REMOVE
                 </button>
               </div>
             );

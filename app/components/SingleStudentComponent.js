@@ -28,22 +28,25 @@ class SingleStudent extends React.Component {
     const student = this.state.student;
     console.log('STUDENT STATE:', student);
     return (
-      <div>
-        <div>
-          <h2>
-            {student.firstName} {student.lastName}
-          </h2>
-          <h4>{student.email}</h4>
-          <img src={student.imageUrl} className="student-image" />
-          <p>{student.gpa}</p>
-          {student.campus ? (
-            <Link to={`/campuses/${student.campus.id}`}>
-              {student.campus.name}
-            </Link>
-          ) : (
-            <p>This student is not yet enrolled at a campus!</p>
-          )}
-        </div>
+      <div className="student-page">
+        <h2>
+          {student.firstName} {student.lastName}
+        </h2>
+        <img src={student.imageUrl} className="student-image" />
+        <p>EMAIL: {student.email}</p>
+        <p>GPA: {student.gpa}</p>
+        {student.campus ? (
+          <div>
+            <p>CAMPUS AFFILIATION:</p>
+            <p className="single-page-link">
+              <Link to={`/campuses/${student.campus.id}`}>
+                {student.campus.name}
+              </Link>
+            </p>
+          </div>
+        ) : (
+          <p>This student is not yet enrolled at a campus!</p>
+        )}
       </div>
     );
   }
