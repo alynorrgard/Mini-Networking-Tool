@@ -29,7 +29,7 @@ class SingleCampus extends React.Component {
       <div>
         <div>
           <h2>{campus.name}</h2>
-          <img src={campus.imageUrl} />
+          <img src={campus.imageUrl} className="campus-image" />
           <h4>{campus.address}</h4>
           <p>{campus.description}</p>
         </div>

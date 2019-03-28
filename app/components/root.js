@@ -5,6 +5,7 @@ import AllCampuses from './AllCampusesComponent';
 import AllStudents from './AllStudentsComponent';
 import SingleCampus from './SingleCampusComponent';
 import SingleStudent from './SingleStudentComponent';
+import NotFound from './NotFoundPage';
 
 const Root = () => {
   return (
@@ -22,6 +23,7 @@ const Root = () => {
           <Route path="/campuses/:campusId" component={SingleCampus} />
           <Route exact path="/students" component={AllStudents} />
           <Route path="/students/:studentId" component={SingleStudent} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </Router>

@@ -21,6 +21,16 @@ body {
   padding-bottom: 100%;
 }
 
+#not-found {
+  margin: 5em 15em;
+  text-align: center;
+  align-self: center;
+}
+
+#not-found > h4 {
+  padding-bottom: 2em;
+}
+
 nav {
   align-items: center;
   background-color: #373c39;
@@ -44,12 +54,19 @@ a {
 }
 
 h1,
+h2,
+h3,
+h4 {
+  font-family: Luminari, fantasy;
+}
+
+h1,
 h4 {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   margin: 0;
-  font-family: fantasy;
+  /* font-family: fantasy; */
 }
 
 main > img {
@@ -62,7 +79,14 @@ main > img {
   font-size: 20px;
   margin: 0 10em 3em;
   text-align: justify;
+  line-height: 1.5;
 }
+
+/* #map {
+  margin: 0;
+  width: 100%;
+  max-height: none;
+} */
 
 nav > img {
   box-sizing: border-box;
@@ -101,7 +125,7 @@ nav > a:hover {
 
 .campus-container > a {
   /* color: #141615; */
-  font-family: fantasy;
+  /* font-family: fantasy; */
 }
 
 .student-image {

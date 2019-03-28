@@ -27,6 +27,7 @@ class AllStudents extends React.Component {
     if (loading) return <LoadingPage />;
     return (
       <div id="all-students">
+        <h1>Meet Our Students:</h1>
         <div id="student-rows">
           {students.map(student => {
             return (

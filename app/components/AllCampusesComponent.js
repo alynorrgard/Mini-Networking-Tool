@@ -27,6 +27,7 @@ class AllCampuses extends React.Component {
     if (loading) return <LoadingPage />;
     return (
       <div id="all-campuses">
+        <h1>Visit Our Campuses:</h1>
         <div id="campus-rows">
           {campuses.map(campus => {
             return (
