@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllUsers } from '../reducers/';
+import { getAllUsers, clearProfile } from '../reducers/';
 
 class Home extends React.Component {
   componentDidMount() {
     this.props.getAllUsers();
+    this.props.clearProfile();
   }
 
   render() {
@@ -25,6 +26,7 @@ class Home extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   getAllUsers: () => dispatch(getAllUsers()),
+  clearProfile: () => dispatch(clearProfile()),
 });
 
 export default connect(

@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import ContactForm from './ContactForm';
-import { addContact } from '../reducers/index';
+import { addContact, getUser } from '../reducers/index';
+import Loading from './LoadingPage';
+import Profile from './ProfilePage';
 
 class AddContact extends React.Component {
   constructor() {
@@ -27,28 +29,41 @@ class AddContact extends React.Component {
     event.preventDefault();
     try {
       const newContact = await axios.post('/api/contacts', this.state);
-      this.props.addContact(newContact.data);
+      await this.props.addContact(newContact.data);
+      this.props.getUser(newContact.data.id);
     } catch (err) {
       console.error('ERROR creating new contact:', err);
     }
   }
 
   render() {
-    return (
-      <ContactForm
-        {...this.state}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit}
-      />
-    );
+    if (this.props.loading) {
+      return <Loading />;
+    } else if (this.props.currentProfile.displayName) {
+      return <Profile contact={this.props.currentProfile} />;
+    } else {
+      return (
+        <ContactForm
+          {...this.state}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+      );
+    }
   }
 }
 
+const mapStateToProps = state => ({
+  currentProfile: state.currentProfile,
+  loading: state.loading,
+});
+
 const mapDispatchToProps = dispatch => ({
   addContact: contact => dispatch(addContact(contact)),
+  getUser: userId => dispatch(getUser(userId)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AddContact);

@@ -21,6 +21,17 @@ router.post('/contacts', async (req, res, next) => {
   }
 });
 
+router.get('/contacts/:userId', async (req, res, next) => {
+  try {
+    const contact = await User.findById(req.params.userId, {
+      include: [{ model: Pet }, { model: Relationship }],
+    });
+    res.send(contact);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.use((req, res, next) => {
   const err = new Error('API route not found!');
   err.status = 404;

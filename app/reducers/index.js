@@ -4,6 +4,8 @@ import axios from 'axios';
 const GOT_USERS = 'GOT_USERS';
 const ADDED_CONTACT = 'ADDED_CONTACT';
 const FETCHING_DATA = 'FETCHING_DATA';
+const DISPLAY_PROFILE = 'DISPLAY_PROFILE';
+const CLEAR_PROFILE = 'CLEAR_PROFILE';
 const GOT_RESULTS = 'GOT_RESULTS';
 
 // ACTION CREATORS
@@ -17,6 +19,13 @@ export const addedContact = contact => ({
 });
 export const fetchingData = () => ({
   type: FETCHING_DATA,
+});
+export const displayProfile = user => ({
+  type: DISPLAY_PROFILE,
+  user,
+});
+export const clearProfile = () => ({
+  type: CLEAR_PROFILE,
 });
 export const gotResults = results => ({
   type: GOT_RESULTS,
@@ -44,6 +53,17 @@ export const addContact = contact => {
     }
   };
 };
+export const getUser = userId => {
+  return async dispatch => {
+    try {
+      dispatch(fetchingData());
+      const { data } = await axios.get(`/api/contacts/${userId}`);
+      dispatch(displayProfile(data));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+};
 export const getResults = () => {
   return async dispatch => {
     try {
@@ -59,6 +79,7 @@ export const getResults = () => {
 // REDUCER
 const initialState = {
   allUsers: [],
+  currentProfile: {},
   searchResults: [],
   loading: false,
 };
@@ -69,6 +90,10 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, allUsers: action.allUsers, loading: false };
     case ADDED_CONTACT:
       return { ...state, allUsers: [...state.allUsers, action.contact] };
+    case DISPLAY_PROFILE:
+      return { ...state, currentProfile: action.user, loading: false };
+    case CLEAR_PROFILE:
+      return { ...state, currentProfile: {} };
     case GOT_RESULTS:
       return { ...state, searchResults: action.results, loading: false };
     case FETCHING_DATA:
