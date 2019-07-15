@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUser } from '../reducers/index';
@@ -25,6 +24,19 @@ class Profile extends React.Component {
       this.setState({
         profile: this.props.currentProfile,
       });
+      this.forceUpdate();
+    } catch (err) {
+      console.error('ERROR loading contact info:', err);
+    }
+  }
+
+  async gatherNewProfile(userId) {
+    try {
+      await this.props.getUser(userId);
+      this.setState({
+        profile: this.props.currentProfile,
+      });
+      this.forceUpdate();
     } catch (err) {
       console.error('ERROR loading contact info:', err);
     }
@@ -58,14 +70,21 @@ class Profile extends React.Component {
                 return (
                   <div key={relationship.relationshipId}>
                     <Link to={`/contacts/${relationship.relationshipId}`}>
-                      <div>{relationship.type}</div>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          this.gatherNewProfile(relationship.relationshipId)
+                        }
+                      >
+                        {relationship.type}
+                      </button>
                     </Link>
                   </div>
                 );
               })
             : null}
         </div>
-        <div>Add Relationship:</div>
+        <div>Add Relationship to Existing User:</div>
         <CreateRelationship gatherProfile={this.gatherProfile} />
       </div>
     );
