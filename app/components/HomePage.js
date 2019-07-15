@@ -12,7 +12,7 @@ class Home extends React.Component {
   render() {
     return (
       <main>
-        <h1>Welcome to the Grapevine!</h1>
+        <h1>Welcome to Aly's Coding Challenge!</h1>
         <Link to="/search">
           <p>Search Contacts</p>
         </Link>

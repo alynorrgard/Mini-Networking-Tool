@@ -1,7 +1,11 @@
 import React from 'react';
 
 const PetForm = props => (
-  <form id="relationship-form" onSubmit={props.handleSubmit}>
+  <form
+    id="relationship-form"
+    onSubmit={props.handleSubmit}
+    onReset={props.handleFormReset}
+  >
     <label htmlFor="displayName">
       Display Name:
       {!props.displayName && <span className="warning">*Required Field</span>}

@@ -53,7 +53,11 @@ class AddContact extends React.Component {
         />
         {this.props.currentProfile.id ? (
           <Link to={`/contacts/${this.props.currentProfile.id}`}>
-            <p>View New Contact</p>
+            <p>
+              {`Success! View ${
+                this.props.currentProfile.displayName
+              }'s Contact Info`}
+            </p>
           </Link>
         ) : null}
       </div>

@@ -7,12 +7,14 @@ import RelationshipForm from './RelationshipForm';
 class CreateRelationship extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       displayName: '',
       type: '',
     };
+    this.state = this.initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormReset = this.handleFormReset.bind(this);
     this.createRelationships = this.createRelationships.bind(this);
   }
 
@@ -30,12 +32,16 @@ class CreateRelationship extends React.Component {
       );
       const relationshipId = relationshipEntity.data.id;
       await this.createRelationships(relationshipId);
-      document.forms['relationship-form'].reset();
       await this.props.gatherProfile();
+      this.handleFormReset();
     } catch (err) {
       console.error('ERROR creating new contact:', err);
     }
   }
+
+  handleFormReset = () => {
+    this.setState(() => this.initialState);
+  };
 
   async createRelationships(relationshipId) {
     const relations = {

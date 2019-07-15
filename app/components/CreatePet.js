@@ -7,12 +7,14 @@ import PetForm from './PetForm';
 class CreatePet extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       displayName: '',
       type: '',
     };
+    this.state = this.initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormReset = this.handleFormReset.bind(this);
   }
 
   handleChange(event) {
@@ -29,12 +31,16 @@ class CreatePet extends React.Component {
         type: this.state.type,
         userId: this.props.userId,
       });
-      document.forms['relationship-form'].reset();
       await this.props.gatherProfile();
+      this.handleFormReset();
     } catch (err) {
       console.error('ERROR creating new contact:', err);
     }
   }
+
+  handleFormReset = () => {
+    this.setState(() => this.initialState);
+  };
 
   render() {
     return (
