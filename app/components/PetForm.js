@@ -2,7 +2,7 @@ import React from 'react';
 
 const PetForm = props => (
   <form
-    id="relationship-form"
+    id="pet-form"
     onSubmit={props.handleSubmit}
     onReset={props.handleFormReset}
   >

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { User, Pet, Relationship } = require('../db');
 const Sequelize = require('sequelize');
 
+// get all existing contacts in the database
 router.get('/contacts', async (req, res, next) => {
   try {
     const contacts = await User.findAll({
@@ -13,6 +14,7 @@ router.get('/contacts', async (req, res, next) => {
   }
 });
 
+// create a new contact
 router.post('/contacts', async (req, res, next) => {
   try {
     const newContact = await User.create(req.body);
@@ -22,6 +24,7 @@ router.post('/contacts', async (req, res, next) => {
   }
 });
 
+// get a single contact by their ID
 router.get('/contacts/:userId', async (req, res, next) => {
   try {
     const contact = await User.findById(req.params.userId, {
@@ -33,6 +36,7 @@ router.get('/contacts/:userId', async (req, res, next) => {
   }
 });
 
+// get a single contact by their displayName
 router.get('/id/:displayName', async (req, res, next) => {
   try {
     const displayNameWithSpace = req.params.displayName.replace('%20', ' ');
@@ -45,6 +49,7 @@ router.get('/id/:displayName', async (req, res, next) => {
   }
 });
 
+// create a new relationship
 router.post('/relationships', async (req, res, next) => {
   try {
     const newRelationship = await Relationship.create(req.body);
@@ -54,6 +59,7 @@ router.post('/relationships', async (req, res, next) => {
   }
 });
 
+// create a new pet
 router.post('/pets', async (req, res, next) => {
   try {
     const newPet = await Pet.create(req.body);
@@ -63,6 +69,7 @@ router.post('/pets', async (req, res, next) => {
   }
 });
 
+// loaded query to get all users based on partial keywords
 router.get('/search/:keywords', async (req, res, next) => {
   try {
     let results = [];
@@ -137,6 +144,7 @@ router.get('/search/:keywords', async (req, res, next) => {
   }
 });
 
+// error handler
 router.use((req, res, next) => {
   const err = new Error('API route not found!');
   err.status = 404;

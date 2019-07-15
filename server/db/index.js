@@ -4,6 +4,8 @@ const db = require('./database');
 const User = require('./UserModel');
 const Pet = require('./PetModel');
 
+// Relationship types are currently limited to the below options,
+// so it is easy to predict and create the vice-versa relationship
 const Relationship = db.define('relationship', {
   type: {
     type: Sequelize.ENUM(
@@ -19,6 +21,7 @@ const Relationship = db.define('relationship', {
   },
 });
 
+// creates relations between database models
 User.belongsToMany(User, {
   as: 'relationships',
   through: 'relationship',
