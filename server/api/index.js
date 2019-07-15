@@ -32,6 +32,27 @@ router.get('/contacts/:userId', async (req, res, next) => {
   }
 });
 
+router.get('/id/:displayName', async (req, res, next) => {
+  try {
+    const displayNameWithSpace = req.params.displayName.replace('%20', ' ');
+    const contact = await User.findOne({
+      where: { displayName: displayNameWithSpace },
+    });
+    res.send(contact);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/relationships', async (req, res, next) => {
+  try {
+    const newRelationship = await Relationship.create(req.body);
+    res.status(201).send(newRelationship);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.use((req, res, next) => {
   const err = new Error('API route not found!');
   err.status = 404;
