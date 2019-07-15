@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ContactForm from './ContactForm';
 import { addContact, getUser } from '../reducers/index';
 import Loading from './LoadingPage';
@@ -28,34 +29,34 @@ class AddContact extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const newContact = await axios.post('/api/contacts', this.state);
-      await this.props.addContact(newContact.data);
-      this.props.getUser(newContact.data.id);
+      const newContact = await axios.post('/api/contacts', this.state); // adds to database
+      await this.props.addContact(newContact.data); // adds to state (allUsers)
+      this.props.getUser(newContact.data.id); // adds to state (currentProfile)
     } catch (err) {
       console.error('ERROR creating new contact:', err);
     }
   }
 
   render() {
-    if (this.props.loading) {
-      return <Loading />;
-    } else if (this.props.currentProfile.displayName) {
-      return <Profile contact={this.props.currentProfile} />;
-    } else {
-      return (
+    return (
+      <div>
         <ContactForm
           {...this.state}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         />
-      );
-    }
+        {this.props.currentProfile.id ? (
+          <Link to={`/contacts/${this.props.currentProfile.id}`}>
+            <p>View New Contact</p>
+          </Link>
+        ) : null}
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => ({
   currentProfile: state.currentProfile,
-  loading: state.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
