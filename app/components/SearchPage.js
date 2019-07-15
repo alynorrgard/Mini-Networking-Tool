@@ -1,5 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getResults, clearState } from '../reducers/index';
+import SearchResults from './SearchResults';
 
 class Search extends React.Component {
   constructor() {
@@ -9,6 +11,10 @@ class Search extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.props.clearState();
   }
 
   async handleChange(event) {
@@ -21,8 +27,7 @@ class Search extends React.Component {
     event.preventDefault();
     try {
       const searchQuery = this.state.keywords.replace(' ', '%');
-      const searchResults = await axios.get(`/api/search/${searchQuery}`);
-      console.log('SEARCH RESULTS!!!!', searchResults);
+      await this.props.getResults(searchQuery);
     } catch (err) {
       console.error('ERROR creating new contact:', err);
     }
@@ -31,34 +36,46 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <main>
-          <h1>Search placeholder</h1>
-        </main>
-        <form id="search-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="keywords">
-            Search Contacts:
-            {!this.state.keywords && (
-              <span className="warning">*Required Field</span>
-            )}
-          </label>
-          <input
-            name="keywords"
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.keywords}
-          />
+        {this.props.searchResults[0] ? (
+          <SearchResults results={this.props.searchResults} />
+        ) : (
+          <div>
+            <main>
+              <h1>Search Contacts:</h1>
+            </main>
+            <form id="search-form" onSubmit={this.handleSubmit}>
+              <input
+                name="keywords"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.keywords}
+              />
 
-          <button
-            type="submit"
-            className="search"
-            disabled={!this.state.keywords}
-          >
-            SEARCH
-          </button>
-        </form>
+              <button
+                type="submit"
+                className="search"
+                disabled={!this.state.keywords}
+              >
+                SEARCH
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     );
   }
 }
 
-export default Search;
+const mapStateToProps = state => ({
+  searchResults: state.searchResults,
+});
+
+const mapDispatchToProps = dispatch => ({
+  getResults: keywords => dispatch(getResults(keywords)),
+  clearState: () => dispatch(clearState()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);

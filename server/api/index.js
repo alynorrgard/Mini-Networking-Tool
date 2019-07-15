@@ -65,19 +65,72 @@ router.post('/pets', async (req, res, next) => {
 
 router.get('/search/:keywords', async (req, res, next) => {
   try {
+    let results = [];
     const Op = Sequelize.Op;
-    const results = await User.findAll({
-      where: {
-        [Op.or]: [
-          { displayName: req.params.keywords },
-          { title: req.params.keywords },
-          { company: req.params.keywords },
-          { location: req.params.keywords },
-        ],
-      },
-      include: [{ model: Pet }, { model: Relationship }],
-    });
-    console.log('SEARCH RESULTS IN ROUTER:', results);
+    const lowerCaseQuery =
+      req.params.keywords[0].toLowerCase() + req.params.keywords.slice(1);
+    const uppercaseQuery =
+      lowerCaseQuery[0].toUpperCase() + lowerCaseQuery.slice(1);
+    const relationTypes = [
+      'Mom',
+      'Dad',
+      'Wife',
+      'Husband',
+      'Girlfriend',
+      'Boyfriend',
+      'Child',
+    ];
+    if (relationTypes.includes(uppercaseQuery)) {
+      // looks for matches in Relationship table
+      const relationshipResults = await Relationship.findAll({
+        where: { type: uppercaseQuery },
+      });
+      const userIdRelationshipResults = relationshipResults.map(
+        relationship => relationship.relationshipId
+      );
+
+      for (let i = 0; i < userIdRelationshipResults.length; i++) {
+        const userId = userIdRelationshipResults[i];
+        const contact = await User.findOne({
+          where: { id: userId },
+        });
+        results.push(contact);
+      }
+    } else {
+      // looks for matches in User table
+      const userResults = await User.findAll({
+        where: {
+          [Op.or]: [
+            { displayName: { [Op.like]: `%${lowerCaseQuery}%` } },
+            { displayName: { [Op.like]: `%${uppercaseQuery}%` } },
+            { title: { [Op.like]: `%${lowerCaseQuery}%` } },
+            { title: { [Op.like]: `%${uppercaseQuery}%` } },
+            { company: { [Op.like]: `%${lowerCaseQuery}%` } },
+            { company: { [Op.like]: `%${uppercaseQuery}%` } },
+            { location: { [Op.like]: `%${lowerCaseQuery}%` } },
+            { location: { [Op.like]: `%${uppercaseQuery}%` } },
+          ],
+        },
+        include: [{ model: Pet }, { model: Relationship }],
+      });
+
+      // looks for matches in Pet table
+      const petResults = await Pet.findAll({
+        where: {
+          [Op.or]: [
+            { displayName: { [Op.like]: `%${lowerCaseQuery}%` } },
+            { displayName: { [Op.like]: `%${uppercaseQuery}%` } },
+            { type: { [Op.like]: `%${lowerCaseQuery}%` } },
+            { type: { [Op.like]: `%${uppercaseQuery}%` } },
+          ],
+        },
+        include: [{ model: User }],
+      });
+      const userPetResults = petResults.map(pet => pet.user);
+
+      results = [...userResults, ...userPetResults];
+    }
+
     res.send(results);
   } catch (err) {
     next(err);

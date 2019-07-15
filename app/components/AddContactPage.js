@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ContactForm from './ContactForm';
 import { addContact, getUser } from '../reducers/index';
-import Loading from './LoadingPage';
-import Profile from './ProfilePage';
 
 class AddContact extends React.Component {
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       displayName: '',
       title: '',
       company: '',
       location: '',
     };
+    this.state = this.initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormReset = this.handleFormReset.bind(this);
   }
 
   async handleChange(event) {
@@ -28,6 +28,7 @@ class AddContact extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
+    event.target.reset();
     try {
       const newContact = await axios.post('/api/contacts', this.state); // adds to database
       await this.props.addContact(newContact.data); // adds to state (allUsers)
@@ -37,6 +38,10 @@ class AddContact extends React.Component {
     }
   }
 
+  handleFormReset = () => {
+    this.setState(() => this.initialState);
+  };
+
   render() {
     return (
       <div>
@@ -44,6 +49,7 @@ class AddContact extends React.Component {
           {...this.state}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          handleFormReset={this.handleFormReset}
         />
         {this.props.currentProfile.id ? (
           <Link to={`/contacts/${this.props.currentProfile.id}`}>

@@ -1,7 +1,11 @@
 import React from 'react';
 
 const ContactForm = props => (
-  <form id="contact-form" onSubmit={props.handleSubmit}>
+  <form
+    id="contact-form"
+    onSubmit={props.handleSubmit}
+    onReset={props.handleFormReset}
+  >
     <label htmlFor="displayName">
       Display Name:
       {!props.displayName && <span className="warning">*Required Field</span>}

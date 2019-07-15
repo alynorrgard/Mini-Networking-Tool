@@ -76,18 +76,6 @@ nav > a:hover {
   border: 1px solid #ffffff;
 }
 
-.add {
-  box-sizing: border-box;
-  font-size: 12px;
-  font-weight: bold;
-  color: #138eff;
-  background-color: #ebf7ff;
-  height: 2em;
-  width: 7em;
-  border: 3px solid #138eff;
-  margin-left: 1em;
-}
-
 .single-page-link:hover {
   font-weight: bold;
 }
