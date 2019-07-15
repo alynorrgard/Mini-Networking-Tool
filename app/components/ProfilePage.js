@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getUser } from '../reducers/index';
 import CreateRelationship from './CreateRelationship';
+import CreatePet from './CreatePet';
 
 class Profile extends React.Component {
   constructor() {
@@ -39,6 +40,18 @@ class Profile extends React.Component {
         <div>Company: {contact.company}</div>
         <div>Location: {contact.location}</div>
         <div>
+          Pets:
+          {contact.pets
+            ? contact.pets.map(pet => {
+                return (
+                  <div key={pet.id}>{`${pet.displayName} (${pet.type})`}</div>
+                );
+              })
+            : null}
+        </div>
+        <div>Add Pet:</div>
+        <CreatePet gatherProfile={this.gatherProfile} userId={contact.id} />
+        <div>
           Relationships:
           {contact.relationships
             ? contact.relationships.map(relationship => {
@@ -52,7 +65,7 @@ class Profile extends React.Component {
               })
             : null}
         </div>
-        <div>Add New Relationship:</div>
+        <div>Add Relationship:</div>
         <CreateRelationship gatherProfile={this.gatherProfile} />
       </div>
     );

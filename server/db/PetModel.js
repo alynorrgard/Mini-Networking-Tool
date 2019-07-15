@@ -4,16 +4,10 @@ const db = require('./database');
 module.exports = db.define('pet', {
   displayName: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    allowNull: true,
   },
   type: {
-    type: Sequelize.ENUM('dog', 'cat'),
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    type: Sequelize.STRING,
+    allowNull: true,
   },
 });

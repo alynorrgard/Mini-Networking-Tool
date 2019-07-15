@@ -12,12 +12,10 @@ const Relationship = db.define('relationship', {
       'Wife',
       'Husband',
       'Girlfriend',
-      'Boyfriend'
+      'Boyfriend',
+      'Child'
     ),
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
+    allowNull: true,
   },
 });
 
