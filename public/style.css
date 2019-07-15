@@ -1,0 +1,98 @@
+/*
+ * Hi! I'm your stylesheet! I've got some sensible defaults here,
+ * but feel free to change me to your heart's content!
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+#loading {
+  padding-bottom: 100%;
+}
+
+#not-found {
+  margin: 5em 15em;
+  text-align: center;
+  align-self: center;
+}
+
+#not-found > h4 {
+  padding-bottom: 2em;
+}
+
+nav {
+  align-items: center;
+  background-color: #138eff;
+  color: #ffffff;
+  display: flex;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: #141615;
+}
+
+h1,
+h4 {
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#home {
+  font-size: 20px;
+  margin: 0 10em 3em;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+nav > img {
+  box-sizing: border-box;
+  height: 70px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+nav > a {
+  padding: 10px;
+  color: #ffffff;
+}
+
+nav > a:hover {
+  padding: 10px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.add {
+  box-sizing: border-box;
+  font-size: 12px;
+  font-weight: bold;
+  color: #138eff;
+  background-color: #ebf7ff;
+  height: 2em;
+  width: 7em;
+  border: 3px solid #138eff;
+  margin-left: 1em;
+}
+
+.single-page-link:hover {
+  font-weight: bold;
+}
+
+.warning {
+  color: #a61108;
+  font-size: 12px;
+}
