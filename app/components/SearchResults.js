@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const SearchResults = props => (
   <div id="search-results">
-    <h1>Search Results:</h1>
-    <div id="results-rows">
+    <h1 className="header">Search Results:</h1>
+    <div>
       {props.results.map(user => {
         return (
           <div key={user.id}>
             <Link to={`/contacts/${user.id}`}>
-              <h2>{user.displayName}</h2>
+              <div className="result">{user.displayName}</div>
             </Link>
           </div>
         );

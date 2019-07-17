@@ -46,13 +46,16 @@ class Profile extends React.Component {
     const contact = this.state.profile;
 
     return (
-      <div>
-        <h1>Display Name: {contact.displayName}</h1>
-        <h3>Title: {contact.title}</h3>
-        <div>Company: {contact.company}</div>
-        <div>Location: {contact.location}</div>
-        <div>
-          Pets:
+      <div id="profile-container">
+        <div className="display-name">{contact.displayName}</div>
+        <div className="category">Title:</div>
+        <div className="response">{contact.title}</div>
+        <div className="category">Company:</div>
+        <div className="response">{contact.company}</div>
+        <div className="category">Location:</div>
+        <div className="response">{contact.location}</div>
+        <div className="category">Pets:</div>
+        <div className="response">
           {contact.pets
             ? contact.pets.map(pet => {
                 return (
@@ -61,10 +64,8 @@ class Profile extends React.Component {
               })
             : null}
         </div>
-        <div>Add Pet:</div>
-        <CreatePet gatherProfile={this.gatherProfile} userId={contact.id} />
-        <div>
-          Relationships:
+        <div className="category">Relationships:</div>
+        <div className="response">
           {contact.relationships
             ? contact.relationships.map(relationship => {
                 return (
@@ -75,6 +76,7 @@ class Profile extends React.Component {
                         onClick={() =>
                           this.gatherNewProfile(relationship.relationshipId)
                         }
+                        className="button"
                       >
                         {relationship.type}
                       </button>
@@ -84,7 +86,9 @@ class Profile extends React.Component {
               })
             : null}
         </div>
-        <div>Add Relationship to Existing User:</div>
+        <div className="category">Add Pet:</div>
+        <CreatePet gatherProfile={this.gatherProfile} userId={contact.id} />
+        <div className="category">Add Relationship to Existing User:</div>
         <CreateRelationship gatherProfile={this.gatherProfile} />
       </div>
     );

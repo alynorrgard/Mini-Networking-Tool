@@ -28,7 +28,11 @@ const RelationshipForm = props => (
       value={props.type}
     />
 
-    <button type="submit" className="add" disabled={!props.displayName}>
+    <button
+      type="submit"
+      className="small-button"
+      disabled={!props.displayName}
+    >
       ADD
     </button>
   </form>

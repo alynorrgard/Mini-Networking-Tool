@@ -12,12 +12,12 @@ class Home extends React.Component {
   render() {
     return (
       <main>
-        <h1>Welcome to Aly's Coding Challenge!</h1>
+        <h1 className="header">Welcome to Aly's Coding Challenge!</h1>
         <Link to="/search">
-          <p>Search Contacts</p>
+          <div className="button">Search Contacts</div>
         </Link>
         <Link to="/addcontact">
-          <p>Add New Contact</p>
+          <div className="button">Add New Contact</div>
         </Link>
       </main>
     );

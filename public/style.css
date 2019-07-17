@@ -1,10 +1,143 @@
-/*
- * Hi! I'm your stylesheet! I've got some sensible defaults here,
- * but feel free to change me to your heart's content!
- */
-
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* Navbar */
+nav {
+  align-items: center;
+  background-color: #138eff;
+  color: #ffffff;
+  display: flex;
+  height: 80px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+nav > img {
+  box-sizing: border-box;
+  height: 70px;
+  align-items: center;
+  padding-right: 10px;
+}
+nav > a {
+  margin: 10px;
+  padding: 6px;
+  color: #ffffff;
+}
+nav > a:hover {
+  padding: 5px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+/* Home */
+.header {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 20px;
+}
+.button {
+  font-size: 15px;
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #138eff;
+  border-radius: 5px;
+  color: black;
+}
+.button:hover {
+  background: #138eff;
+  color: #ffffff;
+}
+
+/* Search */
+#search-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#search-form {
+  margin: 10px;
+}
+input {
+  width: 200px;
+  height: 25px;
+}
+#search-results {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.result {
+  margin: 10px;
+  padding: 6px;
+  font-size: 20px;
+}
+.result:hover {
+  padding: 5px;
+  border: 1px solid #138eff;
+  border-radius: 5px;
+}
+
+/* Profile */
+#profile-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.display-name {
+  margin: 10px;
+  padding: 6px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.category {
+  font-size: 20px;
+}
+.response {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#pet-form,
+#relationship-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+  border: 1px solid #138eff;
+  padding: 5px;
+}
+.small-button {
+  font-size: 10px;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #138eff;
+  border-radius: 5px;
+  color: black;
+}
+.small-button:hover {
+  background: #138eff;
+  color: #ffffff;
+}
+
+/* Add Contact */
+#add-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#contact-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
 }
 
 #loading {
@@ -21,16 +154,6 @@
   padding-bottom: 2em;
 }
 
-nav {
-  align-items: center;
-  background-color: #138eff;
-  color: #ffffff;
-  display: flex;
-  height: 80px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
 main {
   align-items: center;
   display: flex;
@@ -40,45 +163,23 @@ main {
 
 a {
   text-decoration: none;
-  color: #141615;
+  color: black;
 }
 
-h1,
+/* h1,
 h4 {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
   margin: 0;
-}
+} */
 
-#home {
+/* #home {
   font-size: 20px;
   margin: 0 10em 3em;
   text-align: justify;
   line-height: 1.5;
-}
-
-nav > img {
-  box-sizing: border-box;
-  height: 70px;
-  align-items: center;
-  padding-right: 10px;
-}
-
-nav > a {
-  padding: 10px;
-  color: #ffffff;
-}
-
-nav > a:hover {
-  padding: 10px;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-}
-
-.single-page-link:hover {
-  font-weight: bold;
-}
+} */
 
 .warning {
   color: #a61108;

@@ -44,7 +44,8 @@ class AddContact extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="add-container">
+        <div className="header">Add a New Contact:</div>
         <ContactForm
           {...this.state}
           handleChange={this.handleChange}
@@ -53,11 +54,11 @@ class AddContact extends React.Component {
         />
         {this.props.currentProfile.id ? (
           <Link to={`/contacts/${this.props.currentProfile.id}`}>
-            <p>
+            <div className="button">
               {`Success! View ${
                 this.props.currentProfile.displayName
               }'s Contact Info`}
-            </p>
+            </div>
           </Link>
         ) : null}
       </div>

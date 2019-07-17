@@ -39,9 +39,9 @@ class Search extends React.Component {
         {this.props.searchResults[0] ? (
           <SearchResults results={this.props.searchResults} />
         ) : (
-          <div>
+          <div id="search-container">
             <main>
-              <h1>Search Contacts:</h1>
+              <h1 className="header">Search Contacts:</h1>
             </main>
             <form id="search-form" onSubmit={this.handleSubmit}>
               <input
@@ -53,7 +53,7 @@ class Search extends React.Component {
 
               <button
                 type="submit"
-                className="search"
+                className="button"
                 disabled={!this.state.keywords}
               >
                 SEARCH

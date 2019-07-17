@@ -41,7 +41,7 @@ const ContactForm = props => (
       value={props.location}
     />
 
-    <button type="submit" className="add" disabled={!props.displayName}>
+    <button type="submit" className="button" disabled={!props.displayName}>
       ADD
     </button>
   </form>
